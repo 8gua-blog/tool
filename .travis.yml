@@ -1,0 +1,9 @@
+before_install:
+- openssl aes-256-cbc -K $encrypted_a5a031e92598_key -iv $encrypted_a5a031e92598_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+
+addons:
+  ssh_known_hosts: 8gua.blog:22
+script:
+  ssh -i ~/.ssh/id_rsa -l username 8gua.blog "cd /home/username/8gua.blog;git pull"
