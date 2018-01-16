@@ -1,0 +1,48 @@
+https://blog.test.com {
+    
+    tls {
+        dns dnspod
+    }
+    gzip
+    header / -Server
+    header / -Vary
+    header /-S/ {
+          Cache-Control "public, max-age=99936000"
+    }
+    header /-/S/ {
+          Cache-Control "public, max-age=99936000"
+    }
+    header / Cache-Control "max-age=1"
+    log  / /mnt/data/caddy/log/blog.test.com.log "{status} {size} {when_unix} {remote} {method} {uri_escaped} \"{>Referer}\" \"{>User-Agent}\""
+    errors /mnt/data/caddy/log/blog.test.com.error.log 
+
+    rewrite {
+        if {file} not_ends_with .png 
+        if {file} not_ends_with .svg
+        if {file} not_ends_with .ico 
+        if {file} not_ends_with .json
+        if {file} not_ends_with .xml 
+        if {file} not_ends_with .txt
+        if {file} not_ends_with .toml
+        if {path} not_starts_with /-/S/
+        if {path} not_starts_with /-S/
+        if {path} not_starts_with /-/md/
+        to /
+    }
+    expires {
+        match .md$ 1m 
+        match .toml$ 10m 
+        match .ico$ 3y 
+        match .png$ 3y 
+    }
+    root /home/u88/blog.test.com 
+
+}
+http://blog.test.com {
+
+    redir 302 {
+        https://blog.test.com{uri}
+    }
+}
+
+
