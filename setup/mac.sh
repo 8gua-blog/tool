@@ -30,6 +30,8 @@ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 brew update
 brew install node
 brew upgrade node
+brew install git
+brew upgrade git
 fi
 
 npm install -g cnpm --registry=https://registry.npm.taobao.org
