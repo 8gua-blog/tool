@@ -20,6 +20,7 @@ if ! [ -x "$(command -v brew)" ]; then
 </dev/null
 fi
 
+if [ -x "$(command -v brew)" ]; then
 cd "$(brew --repo)"
 git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
 
@@ -29,7 +30,8 @@ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 brew update
 brew install node
 brew upgrade node
-npm install -g cnpm --registry=https://registry.npm.taobao.org
+fi
 
+npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install -g 8gua
 
