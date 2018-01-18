@@ -9,5 +9,5 @@ SCRIPT=mac
 fi
 
 if ! [ $SCRIPT == "" ]; then
-curl -s $URL/$SCRIPT.sh | bash /dev/stdin arg1 arg2
+curl -s $URL/$SCRIPT.sh | bash /dev/stdin
 fi
