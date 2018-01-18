@@ -34,4 +34,4 @@ fi
 
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install -g 8gua
-
+8gua
