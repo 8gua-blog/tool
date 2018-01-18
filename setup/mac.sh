@@ -3,6 +3,8 @@ if [ "$(uname)" != "Darwin" ]; then
 exit 0
 fi
 
+rm -rf ~/.8gua
+
 touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
 PROD=$(softwareupdate -l |
   grep "\*.*Command Line" |
