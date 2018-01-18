@@ -2,6 +2,12 @@
 
 URL=https://gitee.com/u8gua/tool/raw/master/setup
 
-if [ "$(uname)" != "Darwin" ]; then
-curl -s $URL/mac.sh | bash /dev/stdin arg1 arg2
+SCRIPT=""
+
+if [ "$(uname)" == "Darwin" ]; then
+SCRIPT=mac
+fi
+
+if ! [ $SCRIPT == "" ]; then
+curl -s $URL/$SCRIPT.sh | bash /dev/stdin arg1 arg2
 fi
