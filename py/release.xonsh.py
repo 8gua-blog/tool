@@ -72,7 +72,7 @@ def main():
     print(f">> cd {release_path}")
     cd @(release_path)
 
-    rm -rf .gitignore dev py *.md test LICENSE release.sh
+    rm -rf nodemon.json .gitignore dev py *.md test LICENSE release.sh
     git add .
 
     gitignore = join(root, ".gitignore")
